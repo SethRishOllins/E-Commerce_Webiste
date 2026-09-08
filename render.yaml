@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: novea-store
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run server
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_ORIGIN
+        sync: false
