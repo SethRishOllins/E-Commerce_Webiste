@@ -277,6 +277,16 @@
   width: 100%;
   justify-content: center;
 }
+.guide-page { max-width: 900px; margin: 0 auto; padding: 88px 24px; }
+.guide-page h1 { font: 500 clamp(42px,6vw,70px)/1.05 'Playfair Display'; color: #203128; margin: 0; letter-spacing: -2px; }
+.guide-intro { max-width: 620px; line-height: 1.7; color: #5d665e; font-size: 17px; margin: 24px 0 44px; }
+.guide-steps { display: grid; gap: 2px; background: #dce1d9; }
+.guide-steps article { display: grid; grid-template-columns: 80px 1fr; gap: 18px; background: #fbfaf6; padding: 24px; }
+.guide-steps span { color: #bd5b3d; font: 14px 'DM Mono'; }
+.guide-steps h2 { margin: 0 0 8px; font: 500 25px 'Playfair Display'; color: #203128; }
+.guide-steps p { margin: 0; line-height: 1.55; color: #5d665e; }
+.guide-actions { display: flex; gap: 12px; margin-top: 28px; }.guide-actions .primary{display:flex;align-items:center;gap:8px}
+nav button { border: 0; background: transparent; color: inherit; font: inherit; font-weight: 500; padding: 0; }
 @media (max-width: 760px) {
   .filters {
     flex-wrap: wrap;
@@ -297,4 +307,5 @@
   .filters label {
     width: 100%;
   }
+  .guide-page { padding: 58px 22px; }.guide-steps article { grid-template-columns: 48px 1fr; padding: 19px; }.guide-actions { flex-direction: column; }
 }

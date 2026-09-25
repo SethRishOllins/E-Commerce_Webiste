@@ -351,6 +351,16 @@ function Orders({ close }) {
     </div>
   );
 }
+function Guide({ shop, cart, checkout }) {
+  const steps = [
+    ["01", "Browse the collection", "Use search, categories, price filtering, and sorting to find a product."],
+    ["02", "View the product", "Open View details to see product information, reviews, delivery timing, and stock."],
+    ["03", "Add it to your bag", "Choose a quantity, add the item, then review the bag total and delivery progress."],
+    ["04", "Complete demo checkout", "Enter practice contact and delivery information. No payment is collected."],
+    ["05", "Receive confirmation", "Novea generates a practice order number; the cart is cleared and no real order is placed."],
+  ];
+  return <main className="guide-page"><p className="eyebrow">A simple guide</p><h1>How to order with Novea.</h1><p className="guide-intro">This is a demonstration store. You can explore the full shopping journey safely—there are no charges or real deliveries.</p><div className="guide-steps">{steps.map(([number,title,body])=><article key={number}><span>{number}</span><div><h2>{title}</h2><p>{body}</p></div></article>)}</div><div className="guide-actions"><button className="primary" onClick={shop}>Start shopping <ArrowRight size={17}/></button>{cart > 0 && <button className="plain" onClick={checkout}>Continue to demo checkout</button>}</div></main>;
+}
 function App() {
   let [p, setP] = useState([]),
     [cart, setCart] = useState(() => saved("novea_cart", [])),
@@ -366,6 +376,7 @@ function App() {
     [note, setNote] = useState(""),
     [user, setUser] = useState(() => saved("novea_user", null)),
     [email, setEmail] = useState(""),
+    [page, setPage] = useState("home"),
     [err, setErr] = useState("");
   let load = async () => {
     try {
@@ -450,8 +461,8 @@ function App() {
           novea<span>°</span>
         </a>
         <nav>
-          <a href="#shop">Shop</a>
-          <a href="#story">Our story</a>
+          <button onClick={() => setPage("home")}>Shop</button>
+          <button onClick={() => setPage("guide")}>How to order</button>
           <a href="#journal">Journal</a>
         </nav>
         <div className="actions">
@@ -489,7 +500,7 @@ function App() {
           </button>
         </div>
       </header>
-      <main id="top">
+      {page === "guide" ? <Guide shop={() => setPage("home")} cart={count} checkout={() => setModal("checkout")} /> : <main id="top">
         <section className="hero">
           <div className="hero-copy">
             <p className="eyebrow">The art of everyday</p>
@@ -666,7 +677,7 @@ function App() {
             {user ? "View my orders" : "Sign in to continue"}
           </button>
         </section>
-      </main>
+      </main>}
       <footer id="journal">
         <div className="brand">
           novea<span>°</span>
