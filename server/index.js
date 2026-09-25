@@ -6,6 +6,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const bcrypt = require('bcryptjs');
 const { Product, User, Order } = require('./models');
+const catalog = require('./catalog');
 const { protect, adminOnly, makeToken } = require('./auth');
 const app = express();
 app.use(cors({ origin: process.env.CLIENT_ORIGIN?.split(',') || true }));
@@ -29,4 +30,4 @@ app.patch('/api/orders/:id/status', protect, adminOnly, async (req, res, next) =
 app.use(express.static(path.join(__dirname, '..', 'dist')));
 app.get(/^(?!\/api).*/, (_, res) => res.sendFile(path.join(__dirname, '..', 'dist', 'index.html')));
 app.use((err, _, res, __) => { console.error(err); res.status(500).json({ message: err.message || 'Unexpected server error.' }); });
-mongoose.connect(process.env.MONGODB_URI).then(() => app.listen(process.env.PORT || 5000, () => console.log(`API listening on ${process.env.PORT || 5000}`))).catch(err => { console.error('MongoDB connection failed:', err.message); process.exit(1); });
+mongoose.connect(process.env.MONGODB_URI).then(async () => { if (await Product.countDocuments() === 0) { await Product.insertMany(catalog); console.log('Created the Novea demo catalog.'); } app.listen(process.env.PORT || 5000, () => console.log(`API listening on ${process.env.PORT || 5000}`)); }).catch(err => { console.error('MongoDB connection failed:', err.message); process.exit(1); });

@@ -1,0 +1,8 @@
+module.exports = [
+  {name:'Arc Lounge Chair',category:'Furniture',price:249,image:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85',description:'A sculptural everyday chair with rich, textured upholstery.',tag:'Bestseller',inventory:12,featured:true},
+  {name:'Halo Table Lamp',category:'Lighting',price:89,image:'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=85',description:'Soft ambient light, designed for slow evenings.',tag:'New arrival',inventory:20,featured:true},
+  {name:'Mizu Stoneware Set',category:'Dining',price:72,image:'https://images.unsplash.com/photo-1603199506016-b9a594b593c0?auto=format&fit=crop&w=900&q=85',description:'Four hand-finished pieces for the daily table.',inventory:15},
+  {name:'Serein Throw',category:'Textiles',price:118,image:'https://images.unsplash.com/photo-1583845112203-454c5bb4ec97?auto=format&fit=crop&w=900&q=85',description:'A cloud-soft wool blend in a calming neutral.',inventory:8},
+  {name:'Form Side Table',category:'Furniture',price:164,image:'https://images.unsplash.com/photo-1554295405-abb8fd54f153?auto=format&fit=crop&w=900&q=85',description:'Solid oak and quiet geometry beside your favourite seat.',inventory:10},
+  {name:'Onda Vase',category:'Decor',price:56,image:'https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=900&q=85',description:'An organic silhouette, beautiful with or without stems.',inventory:22}
+];
